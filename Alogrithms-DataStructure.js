@@ -1,45 +1,25 @@
-let list = [];
-let size = 0;
+let array = [54, 26, 93, 17, 77, 31, 44, 55, 20];
 
-const enqueue = a => {
-  list.push(a);
-  size++;
+const swap = y => {
+  let temp = array[y];
+  array[y] = array[y + 1];
+  array[y + 1] = temp;
 };
 
-const dequeue = () => {
-  if (isEmpty()) {
-    return 'error, the list is empty';
+const bubbleSort = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+    let swapped = false;
+    for (let y = 0; y < i; y++) {
+      if (array[y] > array[y + 1]) {
+        swap(y);
+        swapped = true;
+      }
+    }
+    if (!swapped) break;
   }
-  const removedItem = list.shift();
-  size--;
-  return removedItem;
+  return array;
 };
 
-const isEmpty = () => {
-  return size === 0;
-};
-
-const front = () => {
-  if (isEmpty()) {
-    return 'error, the list is empty';
-  }
-  return list[0];
-};
-
-enqueue(7);
-console.log(list);
-enqueue(5);
-console.log(list);
-enqueue(9);
-console.log(list);
-console.log(isEmpty());
-console.log(list);
-console.log(dequeue());
-console.log(list);
-console.log(front());
-console.log(size);
-console.log(dequeue());
-console.log(list);
-console.log(dequeue());
-console.log(list);
-console.log(front());
+let arr = [1, 2, 3, 4, 5, 6];
+bubbleSort(arr);
+console.log(arr);
