@@ -6,19 +6,19 @@ const swap = (max, i) => {
   array[i] = temp;
 };
 
-const selectionSort = array => {
-  for (let i = array.length - 1; i > 0; i--) {
-    let max = 0;
-    for (let y = 0; y < i; y++) {
-      if (array[y] > array[max]) {
-        max = y;
-      }
+const insertionSort = array => {
+  for (let i = 1; i < array.length; i++) {
+    let position = 0;
+    while (array[i - 1 - position] > array[i - position]) {
+      let temp = array[i - 1 - position];
+      array[i - 1 - position] = array[i - position];
+      array[i - position] = temp;
+      position++;
     }
-    swap(max, i);
   }
   return array;
 };
 
-let arr = [1, 2, 3, 4, 5, 6];
-selectionSort(array);
-console.log(array);
+insertionSort(sortedArray);
+
+console.log(sortedArray);
