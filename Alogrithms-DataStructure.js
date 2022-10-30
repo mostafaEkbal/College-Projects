@@ -1,24 +1,27 @@
 let array = [54, 26, 93, 17, 77, 31, 44, 55, 20];
 
-const swap = (max, i) => {
-  let temp = array[max];
-  array[max] = array[i];
-  array[i] = temp;
+const swap = (array = [], i = 0, j = 1) => {
+  [array[i], array[j]] = [array[j], array[i]];
 };
 
-const insertionSort = array => {
-  for (let i = 1; i < array.length; i++) {
-    let position = 0;
-    while (array[i - 1 - position] > array[i - position]) {
-      let temp = array[i - 1 - position];
-      array[i - 1 - position] = array[i - position];
-      array[i - position] = temp;
-      position++;
-    }
+const maxHeapify = (array, i) => {
+  const l = 2 * i;
+  const r = 2 * i + 1;
+  let largest;
+  array[l] > array[r] ? (largest = l) : (largest = r);
+  if (array[i] > array[l] && array[i] > array[r]) {
+    return;
+  }
+  swap(array, i, largest);
+};
+
+const buildMaxHeap = array => {
+  for (i = Math.floor(array.length / 2 - 1); i >= 1; i--) {
+    maxHeapify(array, i);
   }
   return array;
 };
 
-insertionSort(sortedArray);
+buildMaxHeap(array);
 
-console.log(sortedArray);
+console.log(array);
