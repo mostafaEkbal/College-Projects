@@ -1,4 +1,4 @@
-let array = [54, 26, 93, 17, 77, 31, 44, 55, 20, 69, 88, 99, 101];
+let array = [54, 26, 93, 17, 77, 31, 44, 55, 20, 69, 88, 99];
 
 const swap = (array = [], i = 0, j = 1) => {
   [array[i], array[j]] = [array[j], array[i]];
@@ -32,7 +32,7 @@ const maxHeapify = (array, i) => {
   }
   swap(array, index, largest);
   if (r <= Math.floor(array.length / 2)) {
-    shiftDown(array, i);
+    return shiftDown(array, i);
   }
   return array;
 };
@@ -44,6 +44,23 @@ const buildMaxHeap = array => {
   return array;
 };
 
-buildMaxHeap(array);
+const binarySearch = (array, item) => {
+  if (array.length) {
+    let first = 0;
+    let last = array.length - 1;
+    let found = false;
 
-console.log(array);
+    while (first <= last) {
+      const midpoint = Math.floor(first + last / 2);
+      if (array[midpoint] === item) return (found = true);
+      if (array[midpoint] < item) first++;
+      if (array[midpoint] > item) last--;
+    }
+    return found;
+  }
+  return false;
+};
+
+array.sort();
+
+console.log(binarySearch(array, 17));
