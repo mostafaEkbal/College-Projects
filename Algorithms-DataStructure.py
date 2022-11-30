@@ -6,19 +6,22 @@ def swap(j, n):
 
 
 def boxSorting(n):
-    hauteur = 0
     swapped = False
+    print('From Bottom')
     for i in range(len(n) - 1, 0, -1):
-        hauteur += n[i][1]
         for j in range(i):
             if (n[j][0] * n[j][2] > n[j+1][0] * n[j+1][2]):
                 swap(j, n)
                 swapped = True
+        print(n[i])
 
         if not swapped:
             return n
+
+        if (i == 1):
+            print(n[0])
+            print('To Top')
     return n
 
 
-print(array)
-print(boxSorting(array))
+boxSorting(array)
