@@ -1,56 +1,56 @@
-array = [(6, 3, 8), (7, 2, 3), (5, 1, 3)]
+# Python program for implementation of heap Sort
+
+# To heapify subtree rooted at index i.
+# n is size of heap
 
 
-def swap(a, i, j):
-    a[i], a[j] = a[j], a[i]
+def heapify(arr, N, i):
+    largest = i  # Initialize largest as root
+    l = 2 * i + 1     # left = 2*i + 1
+    r = 2 * i + 2     # right = 2*i + 2
+
+# See if left child of root exists and is
+# greater than root
+    if l < N and arr[largest] < arr[l]:
+        largest = l
+
+# See if right child of root exists and is
+# greater than root
+    if r < N and arr[largest] < arr[r]:
+        largest = r
+
+# Change root, if needed
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]  # swap
+
+    # Heapify the root.
+        heapify(arr, N, largest)
+
+# The main function to sort an array of given size
 
 
-def isHeap(a):
-    n = 0
-    m = 0
-    while True:
-        for i in [0, 1]:
-            m += 1
-            if m >= len(a):
-                return True
-            if a[m] > a[n]:
-                return False
-        n += 1
+def heapSort(arr):
+    N = len(arr)
+
+# Build a maxheap.
+    for i in range(N//2 - 1, -1, -1):
+        heapify(arr, N, i)
+
+# One by one extract elements
+    for i in range(N-1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]  # swap
+        heapify(arr, i, 0)
 
 
-def shiftDown(a, n, max):
-    while True:
-        biggest = n
-        c1 = 2*n + 1
-        c2 = c1 + 1
-        for c in [c1, c2]:
-            if c < max and a[c] > a[biggest]:
-                biggest = c
-            if biggest == c:
-                return a
+# Driver's code
+if __name__ == '__main__':
+    arr = [99, 58, 12, 11, 13, 5, 6, 7, 2, 55, 1]
 
-            swap(a, n, biggest)
-            n = biggest
+# Function call
+    heapSort(arr)
+    N = len(arr)
 
-
-def heapify(a):
-    i = int(len(a) / 2 - 1)
-    max = len(a)
-    while i >= 0:
-        shiftDown(a, i, max)
-        i -= 1
-
-
-def heapSort(a):
-    heapify(a)
-    for j in range(len(a) - 1, 0, -1):
-        swap(a, 0, j)
-        shiftDown(a, 0, j)
-
-
-a = [12, 11, 15, 8, 9, 20, 77, 5, 2]
-
-print(a)
-
-heapSort(a)
-print(a)
+    print("Sorted array is")
+    for i in range(N):
+        print("%d" % arr[i], end=" ")
+    # This code is contributed by Mohit Kumra
