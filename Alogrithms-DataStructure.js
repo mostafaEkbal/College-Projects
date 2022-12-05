@@ -1,45 +1,36 @@
-let array = [54, 26, 93, 17, 77, 31, 44, 55, 20, 69, 88, 99];
-
+let array = [
+  [6, 8],
+  [2, 4],
+  [7, 1],
+  [9, 2],
+  [5, 7],
+];
 const swap = (array = [], i = 0, j = 1) => {
   [array[i], array[j]] = [array[j], array[i]];
 };
 
-const shiftDown = (array, i) => {
-  const arrayInternalNodes = Math.floor(array.length / 2);
-  if (i * 2 > arrayInternalNodes) {
-    maxHeapify(array, i);
-    return array;
-  }
-  maxHeapify(array, i);
-  for (let j = 2 * i; j <= 2 * i + 1; j++) {
-    maxHeapify(array, j);
-  }
-};
+const heapify = (arr, n, i) => {
+  let largest = i;
+  let l = 2 * i + 1;
+  let r = 2 * i + 2;
 
-const maxHeapify = (array, i) => {
-  const l = 2 * i - 1;
-  const r = 2 * i;
-  const index = i - 1;
-  let largest = index;
-  if (array[index] < array[l]) {
+  if (l < n && arr[largest][0] * arr[largest][1] < arr[l][0] * arr[l][1]) {
     largest = l;
   }
-  if (array[largest] < array[r]) {
+
+  if (r < n && arr[largest][0] * arr[largest][1] < arr[r][0] * arr[r][1]) {
     largest = r;
   }
-  if (largest === index) {
-    return array;
-  }
-  swap(array, index, largest);
-  if (r <= Math.floor(array.length / 2)) {
-    return shiftDown(array, i);
-  }
-  return array;
+
+  if (largest === i) return;
+
+  swap(arr, i, largest);
+  heapify(arr, n, largest);
 };
 
 const buildMaxHeap = array => {
-  for (let i = Math.floor(array.length / 2); i >= 1; i--) {
-    shiftDown(array, i);
+  for (let i = Math.floor(array.length / 2) - 1; i >= 0; i--) {
+    heapify(array, array.length, i);
   }
   return array;
 };
@@ -48,6 +39,11 @@ const heapSort = array => {
   buildMaxHeap(array);
   for (let i = array.length - 1; i > 0; i--) {
     swap(array, i, 0);
-    shiftDown(array, i);
+    heapify(array, i, 0);
   }
+  return array;
 };
+
+heapSort(array);
+
+console.log(array);
