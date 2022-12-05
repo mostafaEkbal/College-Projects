@@ -11,12 +11,12 @@ def heapify(arr, N, i):
 
 # See if left child of root exists and is
 # greater than root
-    if l < N and arr[largest] < arr[l]:
+    if l < N and arr[largest][0] * arr[largest][1] < arr[l][0] * arr[l][1]:
         largest = l
 
 # See if right child of root exists and is
 # greater than root
-    if r < N and arr[largest] < arr[r]:
+    if r < N and arr[largest][0] * arr[largest][1] < arr[r][0] * arr[r][1]:
         largest = r
 
 # Change root, if needed
@@ -44,13 +44,12 @@ def heapSort(arr):
 
 # Driver's code
 if __name__ == '__main__':
-    arr = [99, 58, 12, 11, 13, 5, 6, 7, 2, 55, 1]
+    arr = [(6, 8), (2, 4), (7, 1), (9, 2), (5, 7)]
 
 # Function call
     heapSort(arr)
     N = len(arr)
 
-    print("Sorted array is")
-    for i in range(N):
-        print("%d" % arr[i], end=" ")
+    print("Sorted array is", str(arr))
+
     # This code is contributed by Mohit Kumra
