@@ -44,23 +44,10 @@ const buildMaxHeap = array => {
   return array;
 };
 
-const binarySearch = (array, item) => {
-  if (array.length) {
-    let first = 0;
-    let last = array.length - 1;
-    let found = false;
-
-    while (first <= last) {
-      const midpoint = Math.floor(first + last / 2);
-      if (array[midpoint] === item) return (found = true);
-      if (array[midpoint] < item) first++;
-      if (array[midpoint] > item) last--;
-    }
-    return found;
+const heapSort = array => {
+  buildMaxHeap(array);
+  for (let i = array.length - 1; i > 0; i--) {
+    swap(array, i, 0);
+    shiftDown(array, i);
   }
-  return false;
 };
-
-array.sort();
-
-console.log(binarySearch(array, 17));
