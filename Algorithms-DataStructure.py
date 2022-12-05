@@ -1,38 +1,9 @@
-def differenceBetweenAge(a):
-    newArr = []
-    nextLargest = 0
-    nextSmallest = 0
-    n = len(a)
-    for i in range(n):
-        j = i+1
-        if i > 0:
-            if a[i] - a[i-1] > 0 and a[nextLargest] - a[i] > 0:
-                newArr.append(a[nextLargest] - a[i])
-                continue
-            if a[nextSmallest] - a[i] > 0:
-                newArr.append(a[nextSmallest] - a[i])
-                continue
-        while True:
-            if j > n - 1:
-                j = 0
+a = [5, 7, 8, 11]
+b = [8, 5, 11, 7]
+c = [11, 7, 5, 8]
 
-            if j == i:
-                newArr.append(-1)
-                nextLargest = 0
-                nextSmallest = 0
-                break
-
-            if a[i] < a[j]:
-                newArr.append(a[j] - a[i])
-                nextLargest = j
-                break
-
-            if a[i] > a[j]:
-                nextSmallest = j
-            j += 1
-    return newArr
-
-
-arr = [11, 12, 9, 11, 13, 7, 12, 9, 10, 15, 8]
-
-print(differenceBetweenAge(arr))
+for i in range(len(a)):
+    for j in range(len(b)):
+        for w in range(len(c)):
+            if a[i] == b[j] == c[w]:
+                print('A[', i+1, '] with B[', j+1, '] with C[', w+1, ']')
