@@ -1,12 +1,7 @@
-arr = [9, 5, 28, 24, 47, 55]
-
-
-def sqaure(a):
+def hashTable(a):
+    newArr = [None] * len(a)
     for i in range(len(a)):
-        for j in range(i+1, len(a)):
-            if a[i]**2 == a[j]:
-                return True
-    return False
-
-
-print(sqaure(arr))
+        if newArr[a[i] % len(a)] != None:
+            newArr[a[i] % len(a) + 1] = a[i]
+            continue
+        newArr[a[i] % len(a)] = a[i]
