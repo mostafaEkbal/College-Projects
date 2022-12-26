@@ -1,0 +1,26 @@
+{
+  "name": "collegeprojects",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Algorithms",
+  "main": "Alogrithms-DataStructure.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mostafaEkbal/Algorithms-DataStructures.git"
+  },
+  "author": "Mostafa Ekbal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mostafaEkbal/Algorithms-DataStructures/issues"
+  },
+  "homepage": "https://github.com/mostafaEkbal/Algorithms-DataStructures#readme",
+  "devDependencies": {
+    "node-fetch": "^3.3.0"
+  },
+  "dependencies": {
+    "jsdom": "^20.0.3"
+  }
+}
