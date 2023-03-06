@@ -1,6 +1,7 @@
 package OOP;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,13 @@ public class Main {
         System.out.println(cityList.indexOf("Denver"));
         cityList.add(4, "Paris");
         cityList.remove("Paris");
-        System.out.println(cityList);
+        String[] cityArray = converArrayListToArray(cityList);
+        System.out.println("This is an Array " + Arrays.toString(cityArray) + "\nAnd this is an ArrayList " + cityList);
+    }
+
+    static String[] converArrayListToArray(ArrayList<String> arrayList) {
+        String[] array = new String[arrayList.size()];
+        arrayList.toArray(array);
+        return array;
     }
 }
