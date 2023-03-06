@@ -1,11 +1,22 @@
 package OOP;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        Circle circle1 = new Circle();
-        System.out.println(circle1.getRadius());
-        Circle circle2 = new Circle(50.6);
-        System.out.println(circle2.getRadius());
-
+        ArrayList<String> cityList = new ArrayList<String>();
+        cityList.add("London");
+        cityList.add("Paris");
+        cityList.add("Denver");
+        cityList.add("Miami");
+        cityList.add("Tokyo");
+        cityList.add("Seoul");
+        System.out.println(cityList);
+        System.out.println(cityList.size());
+        System.out.println(cityList.contains("Miami"));
+        System.out.println(cityList.indexOf("Denver"));
+        cityList.add(4, "Paris");
+        cityList.remove("Paris");
+        System.out.println(cityList);
     }
 }
