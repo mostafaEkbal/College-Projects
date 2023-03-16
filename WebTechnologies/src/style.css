@@ -1,0 +1,9 @@
+table,
+td,
+th,
+table,
+td {
+  border: 3px solid deeppink;
+  border-collapse: collapse;
+  border-style: ridge;
+}
