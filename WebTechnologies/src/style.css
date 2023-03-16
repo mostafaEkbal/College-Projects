@@ -1,9 +1,24 @@
 table,
-td,
 th,
-table,
 td {
-  border: 3px solid deeppink;
+  border: 2.5px solid deepskyblue;
   border-collapse: collapse;
-  border-style: ridge;
+  border-style: groove;
+}
+
+.table-header {
+  text-align: start;
+  width: 300px;
+}
+
+tr {
+  transition: background-color 200ms ease-in-out;
+}
+
+tr:nth-child(even) {
+  background-color: #d6eeee;
+}
+
+tr:hover {
+  background-color: thistle;
 }

@@ -12,8 +12,8 @@
 <body>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Occupation</th>
+            <th class="table-header table-header--1">Name</th>
+            <th class="table-header table-header--2">Occupation</th>
         </tr>
 
         <?php
