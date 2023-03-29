@@ -9,7 +9,7 @@ function connectDatabase($host, $user, $pass, $name)
     if ($conn->connect_error) {
         die("Connection Failed" . $conn->connect_errno);
     }
-    echo "Connected successfully";
+    return $conn;
 }
-connectDatabase(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+$conn = connectDatabase(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 ?>
