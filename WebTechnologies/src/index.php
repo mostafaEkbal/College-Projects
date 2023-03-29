@@ -26,18 +26,6 @@ $sales = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </tr>
 
         <?php foreach ($sales as $sale): ?>
-            <!-- $occupations = array(
-            "K. Smith" => 'Plumber',
-            'N. Jones' => 'Electrican',
-            'P. Ibboston' => 'Plasterer'
-        );
-
-        foreach ($occupations as $name => $occupation) {
-            echo '<tr>';
-            echo '<td>', htmlspecialchars(print_r($name, true)), '</td>';
-            echo '<td>', htmlspecialchars(print_r($occupation, true)), '</td>';
-            echo '</tr>';
-        } -->
             <Tr>
                 <td>
                     <?php echo $sale['clientName']; ?>
@@ -49,9 +37,11 @@ $sales = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     <?php echo $sale['amount']; ?>
                 </td>
             </Tr>
-
         <?php endforeach; ?>
     </table>
+    <?php if (empty($sales)): ?>
+        <h2>No Data</h2>
+    <?php endif; ?>
 </body>
 
 </html>
