@@ -18,6 +18,15 @@ $sales = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </head>
 
 <body>
+    <form action="">
+        <h2>Sumbit New Sales Record</h2>
+        <label for="client-name">Client Name</label>
+        <input type="text" name="client-name">
+        <label for="date">Date of Sale</label>
+        <input type="date" name="date">
+        <label for="amount">Value of Sale</label>
+        <input type="number" name="amount" pattern="[0-9]+">
+    </form>
     <table>
         <tr>
             <th class="table-header table-header--1">Client</th>
