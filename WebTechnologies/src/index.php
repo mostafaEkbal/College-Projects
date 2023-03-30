@@ -27,6 +27,20 @@ $sales = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <label for="amount">Value of Sale</label>
         <input type="number" name="amount" pattern="[0-9]+">
     </form>
+    <form action="">
+        <h2>Produce a Sorted Display of Sales</h2>
+        <label for="sort-on">Sort tabel on = </label>
+        <select>
+            <option value="client">Client</option>
+            <option value="date">Date</option>
+            <option value="amount">Amount</option>
+        </select>
+        <label for="sort-in">Sort in = </label>
+        <select>
+            <option value="ascending">Ascending order</option>
+            <option value="descending">Descending order</option>
+        </select>
+    </form>
     <table>
         <tr>
             <th class="table-header table-header--1">Client</th>
