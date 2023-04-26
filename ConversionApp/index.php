@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <?php include("Pages/Header.php"); ?>
 
     <script src="" async defer></script>
 </body>
