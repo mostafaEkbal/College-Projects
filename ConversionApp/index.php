@@ -12,6 +12,7 @@
 
 <body>
     <?php include("Pages/Header.php"); ?>
+    <?php include("config/routing.php"); ?>
 
     <script src="" async defer></script>
 </body>
