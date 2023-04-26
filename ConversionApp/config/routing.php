@@ -6,8 +6,12 @@ route('/', function () {
     include("$_SERVER[DOCUMENT_ROOT]/Pages/Home.php");
 });
 
-route('/login', function () {
+route('/info', function () {
     include("$_SERVER[DOCUMENT_ROOT]/Pages/Interior_Page1.php");
+});
+
+route('/conversion', function () {
+    include("$_SERVER[DOCUMENT_ROOT]/Pages/Interior_Page2.php");
 });
 
 route('/about-us', function () {
