@@ -6,9 +6,8 @@ import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
-        Integer[] array1 = { 90, 70, 88, 66, 94, 93 };
-        ArrayList<Integer> list1 = converIntegerArrayToArrayList(array1);
-        collectionsMethodsTest(list1);
+        Circle s = new Circle();
+        s.radius
     }
 
     static void arrayListMethodsTest(ArrayList<String> arrayList) {

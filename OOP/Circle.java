@@ -1,7 +1,7 @@
 package OOP;
 
 public class Circle {
-    private double radius;
+    protected double radius;
 
     Circle() {
         this(1.0);
@@ -21,5 +21,11 @@ public class Circle {
 
     public double getArea() {
         return this.radius * this.radius * Math.PI;
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
     }
 }
