@@ -3,16 +3,27 @@
         <label for="clientName">Enter your first and last Name</label>
         <input type="text" onfocus="focusAction()" onblur="blurAction()" name="clientName">
         <label for="clientEmail">Enter your email</label>
-        <input type="text" name="clientEmail">
+        <input type="text" onchange="inputChangeAction()" id="email-input" name="clientEmail">
         <button type="sumbit" name="sumbit">register</button>
         <div id="message-box"></div>
         <script>
             const message = document.querySelector('#message-box');
+            const email = document.querySelector('#email-input');
             function blurAction() {
-                message.textContent = 'Please write your information';
+                message.textContent = 'Please write your information, and then press register';
             }
             function focusAction() {
-                message.textContent = 'Good Boy';
+                message.textContent = 'Thank you for your patience';
+            }
+            function inputChangeAction() {
+                const pattern = /^[\w\-\.\+]+\@\w+\.\w{2,4}$/;
+                let test = pattern.test(email.value);
+                if (test) {
+                    message.textContent = 'This is a vaid email, you can press register now';
+                    return
+                }
+                message.textContent = 'Not a valid email, please try again  ';
+                return;
             }
         </script>
     </form>
