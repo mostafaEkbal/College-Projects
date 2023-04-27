@@ -56,7 +56,7 @@ function dataUnitsConversion(from, to, input) {
     result = input.value / 2 ^ 20;
   }
   if (from.value === 'kiloByte' && to.value === 'byte') {
-    ((result = input.value) * 2 ^ 10;
+    (result = input.value) * 2 ^ 10;
   }
   if (from.value === 'kiloByte' && to.value === 'bit') {
     result = input.value * 8 * 2 ^ 10;
@@ -72,7 +72,7 @@ function dataUnitsConversion(from, to, input) {
     result = input.value / 2 ^ 10;
   }
   if (from.value === 'megaByte' && to.value === 'bit') {
-    ((result = input.value * 8) * 2 ^ 20;
+    (result = input.value * 8) * 2 ^ 20;
   }
 
   if (from.value === 'gigaByte' && to.value === 'kiloByte') {

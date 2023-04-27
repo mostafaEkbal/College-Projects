@@ -1,10 +1,20 @@
 <?php if (!isset($_POST['sumbit'])): ?>
     <form action="<?php ($_SERVER['PHP_SELF']); ?>" method="post">
         <label for="clientName">Enter your first and last Name</label>
-        <input type="text" name="clientName">
+        <input type="text" onfocus="focusAction()" onblur="blurAction()" name="clientName">
         <label for="clientEmail">Enter your email</label>
         <input type="text" name="clientEmail">
         <button type="sumbit" name="sumbit">register</button>
+        <div id="message-box"></div>
+        <script>
+            const message = document.querySelector('#message-box');
+            function blurAction() {
+                message.textContent = 'Please write your information';
+            }
+            function focusAction() {
+                message.textContent = 'Good Boy';
+            }
+        </script>
     </form>
 <?php endif; ?>
 
