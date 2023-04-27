@@ -14,7 +14,7 @@ route('/conversion', function () {
     include("$_SERVER[DOCUMENT_ROOT]/Pages/Interior_Page2.php");
 });
 
-route('/about-us', function () {
+route('/contact-us', function () {
     include("$_SERVER[DOCUMENT_ROOT]/Pages/About_Us.php");
 });
 

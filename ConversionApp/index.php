@@ -7,12 +7,14 @@
     <title>Ekbal-Data Units Conversion</title>
     <meta name="description" content="Bit to Byte Conversion App">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <?php include("Pages/Header.php"); ?>
-    <?php include("config/routing.php"); ?>
+    <div class="container">
+        <?php include("Pages/Header.php"); ?>
+        <?php include("config/routing.php"); ?>
+    </div>
 
     <script src="" async defer></script>
 </body>
