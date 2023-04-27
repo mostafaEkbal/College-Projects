@@ -18,6 +18,10 @@ route('/contact-us', function () {
     include("$_SERVER[DOCUMENT_ROOT]/Pages/About_Us.php");
 });
 
+route('/login', function () {
+    include("$_SERVER[DOCUMENT_ROOT]/Pages/Login.php");
+});
+
 route('/404', function () {
     echo "Page not found";
 });
