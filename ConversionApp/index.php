@@ -16,7 +16,7 @@
         <?php include("config/routing.php"); ?>
     </div>
 
-    <script src="" async defer></script>
+    <script src="js/app.js" async defer></script>
 </body>
 
 </html>

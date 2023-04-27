@@ -4,7 +4,7 @@
         <div class="conversion__units-container">
             <label class="conversion__label" for="convert-from">from:</label>
             <select name="convert-from" id="convert-from" class="conversion__select">
-                <option value="null">Choose a unit...</option>
+                <option value="null">...</option>
                 <option value="bit" class="converion__option">Bit</option>
                 <option value="byte" class="converion__option">Bytte</option>
                 <option value="kiloByte" class="converion__option">KiloByte</option>
@@ -15,7 +15,7 @@
         <div class="conversion__units-container">
             <label class="conversion__label" for="convert-to">to:</label>
             <select name="convert-to" id="convert-to" class="conversion__select">
-                <option value="null">Choose a unit...</option>
+                <option value="null">...</option>
                 <option value="bit" class="converion__option">Bit</option>
                 <option value="byte" class="converion__option">Bytte</option>
                 <option value="kiloByte" class="converion__option">KiloByte</option>
@@ -24,10 +24,10 @@
             </select>
         </div>
         <div class="conversion__input-container">
-            <input type="number" placeholder="enter a value">
+            <input type="number" placeholder="enter a value" id="number-input">
             <button type="submit">convert</button>
         </div>
-        <div class="conversion__output">
+        <div class="conversion__output" id="conversion-output">
 
         </div>
     </form>
