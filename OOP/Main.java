@@ -3,11 +3,24 @@ package OOP;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.io.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Circle s = new Circle();
-        s.radius
+        try {
+            File fw = new File("./luck.txt");
+            Scanner sc = new Scanner(fw);
+            int count = 0;
+            while (sc.hasNextLine()) {
+                System.out.println(sc.nextLine());
+                count++;
+            }
+            sc.close();
+            System.out.println(count);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     static void arrayListMethodsTest(ArrayList<String> arrayList) {
