@@ -8,19 +8,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            File fw = new File("./luck.txt");
-            Scanner sc = new Scanner(fw);
-            int count = 0;
-            while (sc.hasNextLine()) {
-                System.out.println(sc.nextLine());
-                count++;
-            }
-            sc.close();
-            System.out.println(count);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        Circle obj1 = new Circle(5);
+        Circle obj2 = new Circle(20);
+        Circle obj3 = new Circle(40);
+        ArrayList<Circle> circleList = new ArrayList<Circle>(4);
+        circleList.add(0, obj3);
+        circleList.add(obj2);
+        circleList.add(obj1);
+        Deal_Circles.writeToFile(circleList);
+        Deal_Circles.printCircles(Deal_Circles.readFromFile());
     }
 
     static void arrayListMethodsTest(ArrayList<String> arrayList) {
