@@ -1,9 +1,13 @@
 <?php if (!isset($_POST['sumbit'])): ?>
-    <form action="<?php ($_SERVER['PHP_SELF']); ?>" method="post">
-        <label for="clientName">Enter your first and last Name</label>
-        <input type="text" onfocus="focusAction()" onblur="blurAction()" name="clientName">
-        <label for="clientEmail">Enter your email</label>
-        <input type="text" onchange="inputChangeAction()" id="email-input" name="clientEmail">
+    <form action="<?php ($_SERVER['PHP_SELF']); ?>" class="login-form" method="post">
+        <div class="login-label">
+            <label for="clientName">Enter your first and last Name</label>
+            <input type="text" onfocus="focusAction()" onblur="blurAction()" name="clientName">
+        </div>
+        <div class="login-label">
+            <label for="clientEmail">Enter your email</label>
+            <input type="text" onchange="inputChangeAction()" id="email-input" name="clientEmail">
+        </div>
         <button type="sumbit" name="sumbit">register</button>
         <div id="message-box"></div>
         <script>

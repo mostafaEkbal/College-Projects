@@ -24,3 +24,15 @@ body {
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
