@@ -1,22 +1,32 @@
 package OOP;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+
+// (“Smith”,30), (“Anderson", 31), (“Lewis", 29),  and ("Cook", 29). 
 
 public class Main {
     public static void main(String[] args) {
-        Integer[] array1 = { 3, 4, 5, 2, 1 };
-        Integer[] array2 = { 2, 3, 7, 8, 9 };
-        Set<Integer> s1 = new LinkedHashSet<Integer>(Arrays.asList(array1));
-        Set<Integer> s2 = new LinkedHashSet<Integer>(Arrays.asList(array2));
-        System.out.println(s1);
-        System.out.println(s2);
-        s1.addAll(s2);
-        System.out.println(s1);
-        s1.retainAll(s2);
-        System.out.println(s1);
-        s1.removeAll(s2);
-        System.out.println(s1);
+        Map<String, Integer> ageMap = new HashMap<>();
+        ageMap.put("Smith", 30);
+        ageMap.put("Anderson", 31);
+        ageMap.put("Lewis", 29);
+        ageMap.put("Cook", 29);
+        System.out.println("Display entries in HashMap");
+        System.out.println(ageMap + "\n");
+        System.out.println("\nThe age for " + "Lewis is " + ageMap.get("Lewis"));
+        System.out.println("Names for those whose ag >= 30 are: ");
+
+        for (String name : ageMap.keySet()) {
+            if (ageMap.get(name) >= 30)
+                System.out.println(name);
+        }
+
+        Map<String, Integer> ageTreeMap = new TreeMap<>(ageMap);
+        System.out.println(ageTreeMap);
     }
 }
