@@ -11,22 +11,27 @@ import java.util.TreeMap;
 
 public class Main {
     public static void main(String[] args) {
-        Map<String, Integer> ageMap = new HashMap<>();
-        ageMap.put("Smith", 30);
-        ageMap.put("Anderson", 31);
-        ageMap.put("Lewis", 29);
-        ageMap.put("Cook", 29);
-        System.out.println("Display entries in HashMap");
-        System.out.println(ageMap + "\n");
-        System.out.println("\nThe age for " + "Lewis is " + ageMap.get("Lewis"));
-        System.out.println("Names for those whose ag >= 30 are: ");
+        String text = "Good morning. Have a good class. " + "Have a good visit. Have fun!";
+        Map<String, Integer> sortedWordsCount = new TreeMap<>(countTheOccurenceOfWords(text)S);
+        System.out.println(sortedWordsCount);
+    }
 
-        for (String name : ageMap.keySet()) {
-            if (ageMap.get(name) >= 30)
-                System.out.println(name);
+    static Map<String, Integer> countTheOccurenceOfWords(String text) {
+        Map<String, Integer> wordsCount = new HashMap<>();
+        String[] words = text.split("\\W+");
+
+        for (String word : words) {
+            word = word.toLowerCase();
+            if (wordsCount.size() > 0) {
+                if (wordsCount.containsKey(word)) {
+                    Integer value = wordsCount.get(word);
+                    value++;
+                    wordsCount.put(word, value);
+                    continue;
+                }
+            }
+            wordsCount.put(word, 1);
         }
-
-        Map<String, Integer> ageTreeMap = new TreeMap<>(ageMap);
-        System.out.println(ageTreeMap);
+        return wordsCount;
     }
 }
