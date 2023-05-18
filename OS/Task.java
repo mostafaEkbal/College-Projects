@@ -6,11 +6,16 @@ public class Task implements Runnable {
     }
 
     public static void main(String[] args) {
-        Thread worker = new Thread(new Task());
-        worker.start();
+        WhereAmI place1 = new WhereAmI(2);
+        WhereAmI place2 = new WhereAmI(1);
+        WhereAmI place3 = new WhereAmI(3);
+
         try {
-            worker.join();
-        } catch (InterruptedException ie) {
+            place1.start();
+            place2.start();
+            place3.start();
+        } catch (Exception ie) {
+            System.out.println(ie);
         }
     }
 }
