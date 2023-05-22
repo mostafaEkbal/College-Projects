@@ -30,7 +30,7 @@ public class Test_WashingMachine {
                 washingMachinesList.add(obj);
             }
             sc.close();
-            Collections.sort(washingMachinesList, (o1, o2) -> o1.compareTo(o2));
+            Collections.sort(washingMachinesList, (o1, o2) -> o1.getBrandName().compareTo(o2.getBrandName()));
             System.out.println(washingMachinesList);
         } catch (FileNotFoundException e) {
             System.out.println(e);
