@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 public class Main {
     public static void main(String[] args) {
-        String text = "Good morning. Have a good class. " + "Have a good visit. Have fun!";
+        String text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus unde labore odio, quae distinctio similique odit neque, repellendus deleniti consequuntur accusamus, blanditiis vitae pariatur dolor libero architecto cumque id? Nostrum!";
         Map<String, Integer> sortedWordsCount = new TreeMap<>(countTheOccurenceOfLetters(text));
         System.out.println(sortedWordsCount);
     }
