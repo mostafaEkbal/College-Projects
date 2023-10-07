@@ -15,3 +15,21 @@ adjanceyList.set(12, [29, 30]);
 adjanceyList.set(13, [31, 32]);
 
 console.log(adjanceyList);
+
+function bfs(start) {
+  const queue = [start];
+  while (queue.length > 0) {
+    bfsSearching(queue);
+  }
+
+  function bfsSearching(queue) {
+    console.log(queue);
+    const parent = queue.shift();
+    if (parent <= adjanceyList.size) {
+      const childrens = adjanceyList.get(parent);
+      queue.push(...childrens);
+    }
+  }
+}
+
+bfs(1);
