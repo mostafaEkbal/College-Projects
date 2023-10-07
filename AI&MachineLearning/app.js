@@ -14,17 +14,22 @@ adjanceyList.set(11, [27, 28]);
 adjanceyList.set(12, [29, 30]);
 adjanceyList.set(13, [31, 32]);
 
-console.log(adjanceyList);
-
-function bfs(start) {
+function bfs(start, target) {
   const queue = [start];
-  while (queue.length > 0) {
+  let path = [];
+  let targetFound = false;
+  while (queue.length > 0 && !targetFound) {
     bfsSearching(queue);
   }
 
   function bfsSearching(queue) {
     console.log(queue);
     const parent = queue.shift();
+    if (parent === target) {
+      console.log('found', target);
+      targetFound = true;
+      return;
+    }
     if (parent <= adjanceyList.size) {
       const childrens = adjanceyList.get(parent);
       queue.push(...childrens);
@@ -32,4 +37,4 @@ function bfs(start) {
   }
 }
 
-bfs(1);
+bfs(1, 31);
