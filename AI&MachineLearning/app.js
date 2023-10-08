@@ -16,6 +16,7 @@ adjanceyList.set(13, [31, 32]);
 
 function bfs(start, target) {
   const queue = [start];
+  const visited = new Set();
   let path = [];
   let targetFound = false;
   while (queue.length > 0 && !targetFound) {
@@ -23,7 +24,21 @@ function bfs(start, target) {
   }
 
   function bfsSearching(queue) {
-    console.log(queue);
+    console.log('nodes \n', queue);
+    for (const i in queue) {
+      if (!path.length) {
+        path.push([queue[i]]);
+        break;
+      }
+      if (!visited.has(queue[i])) {
+        path.push([...path[0], queue[i]]);
+        visited.add(queue[i]);
+      }
+      if (queue.length - 1 <= i) {
+        path.shift();
+      }
+    }
+    console.log('paths \n', path, '\n');
     const parent = queue.shift();
     if (parent === target) {
       console.log('found', target);
