@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+
 import java.io.IOException;
 
 /**
