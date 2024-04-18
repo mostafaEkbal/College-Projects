@@ -113,6 +113,17 @@ class JApp1Panel extends JPanel {
         return gp;
     }
 
+    public Ellipse2D drawRabbitButton() {
+        return new Ellipse2D.Double(342.5, 405, 15, 15);
+    }
+
+    public void drawRabbitChemise(Graphics2D g2) {
+        QuadCurve2D qd1 = new QuadCurve2D.Double(250, 375, 300, 435, 345, 400);
+        g2.draw(qd1);
+        QuadCurve2D qd2 = new QuadCurve2D.Double(450, 375, 400, 435, 355, 400);
+        g2.draw(qd2);
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -127,6 +138,12 @@ class JApp1Panel extends JPanel {
         g2.fill(drawRabbitBody());
         g2.setPaint(Color.black);
         g2.draw(drawRabbitBody());
+        g2.draw(drawRabbitButton());
+        g2.setPaint(Color.WHITE);
+        g2.fill(drawRabbitButton());
+        g2.setPaint(Color.black);
+        drawRabbitChemise(g2);
+
 
 
         // Lesson 11
