@@ -73,23 +73,35 @@ class JApp1Panel extends JPanel {
     public GeneralPath drawRabbitEars() {
         GeneralPath gp = new GeneralPath();
         gp.moveTo(235, 235);
-        gp.quadTo(275, 0, 325, 230);
-        gp.lineTo(375, 230);
-        gp.quadTo(425, 0, 465, 235);
+        gp.quadTo(275, 0, 340, 230);
+        gp.lineTo(360, 230);
+        gp.quadTo(400, 0, 465, 235);
 
         return gp;
     }
 
     public Arc2D drawRabbitHead() {
-        Arc2D arc = new Arc2D.Float(200, 200, 300, 200, 140, 260, Arc2D.OPEN);
-        return arc;
+        return new Arc2D.Float(200, 200, 300, 200, 140, 260, Arc2D.OPEN);
+    }
+
+    public void drawRabbitEye(Graphics2D g2) {
+        Ellipse2D eye1 = new Ellipse2D.Double(250, 300, 10, 10);
+        g2.fill(eye1);
+        Ellipse2D eye2 = new Ellipse2D.Double(440, 300, 10, 10);
+        g2.fill(eye2);
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(3));
         g2.draw(drawRabbitHead());
         g2.draw(drawRabbitEars());
+        drawRabbitEye(g2);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawLine(340 , 360, 360, 370);
+        g2.drawLine(340 , 370, 360, 360);
+
 
 
 
