@@ -8,7 +8,6 @@ public class Skel extends JApplet {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         JFrame frame = new JFrame();
         frame.setTitle("Graphics");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,17 +70,28 @@ class JApp1Panel extends JPanel {
         return gp;
     }
 
-    public GeneralPath drawRabbitHead() {
+    public GeneralPath drawRabbitEars() {
         GeneralPath gp = new GeneralPath();
+        gp.moveTo(235, 235);
+        gp.quadTo(275, 0, 325, 230);
+        gp.lineTo(375, 230);
+        gp.quadTo(425, 0, 465, 235);
 
         return gp;
+    }
+
+    public Arc2D drawRabbitHead() {
+        Arc2D arc = new Arc2D.Float(200, 200, 300, 200, 140, 260, Arc2D.OPEN);
+        return arc;
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        Arc2D arc = new Arc2D.Float(400, 300, 300, 200, 140, 280, Arc2D.OPEN);
-        g2.draw(arc);
+        g2.draw(drawRabbitHead());
+        g2.draw(drawRabbitEars());
+
+
 
         // Lesson 11
         // BufferedImage im = null;
