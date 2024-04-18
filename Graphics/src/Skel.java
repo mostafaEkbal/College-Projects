@@ -85,9 +85,9 @@ class JApp1Panel extends JPanel {
     }
 
     public void drawRabbitEye(Graphics2D g2) {
-        Ellipse2D eye1 = new Ellipse2D.Double(250, 300, 10, 10);
+        Ellipse2D eye1 = new Ellipse2D.Double(250, 300, 15, 20);
         g2.fill(eye1);
-        Ellipse2D eye2 = new Ellipse2D.Double(440, 300, 10, 10);
+        Ellipse2D eye2 = new Ellipse2D.Double(440, 300, 15, 20);
         g2.fill(eye2);
     }
 
