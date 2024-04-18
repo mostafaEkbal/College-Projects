@@ -1,15 +1,6 @@
 import java.awt.*;
-import java.awt.event.*;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
 import java.awt.geom.*;
-import java.awt.image.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.EventListener;
-import java.util.Random;
 
 public class Skel extends JApplet {
 
@@ -80,43 +71,53 @@ class JApp1Panel extends JPanel {
         return gp;
     }
 
+    public GeneralPath drawRabbitHead() {
+        GeneralPath gp = new GeneralPath();
+
+        return gp;
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.MAGENTA);
+        Arc2D arc = new Arc2D.Float(400, 300, 300, 200, 140, 280, Arc2D.OPEN);
+        g2.draw(arc);
 
-        BufferedImage im = null;
-        try {
-            im = ImageIO.read(new File("N:\\about-image.png"));
-        } catch (IOException e) {
-            System.out.println('e');
-        }
+        // Lesson 11
+        // BufferedImage im = null;
+        // try {
+        // im = ImageIO.read(new File("N:\\about-image.png"));
+        // } catch (IOException e) {
+        // System.out.println('e');
+        // }
 
-        assert im != null;
-        g2.drawImage(im, 0, 0, this);
+        // assert im != null;
+        // g2.drawImage(im, 0, 0, this);
 
-        RescaleOp li = new RescaleOp(1.2f, 0, null);
-        g2.drawImage(li.filter(im, null), 0, im.getHeight(), this);
+        // RescaleOp li = new RescaleOp(1.2f, 0, null);
+        // g2.drawImage(li.filter(im, null), 0, im.getHeight(), this);
 
-        RescaleOp da = new RescaleOp(.75f, 0, null);
-        g2.drawImage(da.filter(im, null), im.getWidth(), 0, this);
+        // RescaleOp da = new RescaleOp(.75f, 0, null);
+        // g2.drawImage(da.filter(im, null), im.getWidth(), 0, this);
 
-        RescaleOp in = new RescaleOp(-1f, 255, null);
-        g2.drawImage(in.filter(im, null), im.getWidth() * 2, 0, this);
+        // RescaleOp in = new RescaleOp(-1f, 255, null);
+        // g2.drawImage(in.filter(im, null), im.getWidth() * 2, 0, this);
 
-        float[] sharpeningData = { 0f, -1f, 0f, -1f, 5f, -1f, 0f, -1f, 0f };
-        Kernel ker1 = new Kernel(3, 3, sharpeningData);
-        ConvolveOp op1 = new ConvolveOp(ker1);
-        g2.drawImage(op1.filter(im, null), im.getWidth(), im.getHeight(), this);
-        float[] noiseReductionData = { 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f };
-        Kernel ker2 = new Kernel(3, 3, noiseReductionData);
-        ConvolveOp op2 = new ConvolveOp(ker2);
-        g2.drawImage(op2.filter(im, null), 0, 0, this);
+        // float[] sharpeningData = { 0f, -1f, 0f, -1f, 5f, -1f, 0f, -1f, 0f };
+        // Kernel ker1 = new Kernel(3, 3, sharpeningData);
+        // ConvolveOp op1 = new ConvolveOp(ker1);
+        // g2.drawImage(op1.filter(im, null), im.getWidth(), im.getHeight(), this);
+        // float[] noiseReductionData = { 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 /
+        // 9f, 1 / 9f, 1 / 9f, 1 / 9f };
+        // Kernel ker2 = new Kernel(3, 3, noiseReductionData);
+        // ConvolveOp op2 = new ConvolveOp(ker2);
+        // g2.drawImage(op2.filter(im, null), 0, 0, this);
 
-        AffineTransform xForm = new AffineTransform();
-        xForm.setToRotation(Math.PI / 4, im.getWidth(), im.getHeight() * 3);
-        AffineTransformOp op3 = new AffineTransformOp(xForm, AffineTransformOp.TYPE_BILINEAR);
-        g2.drawImage(op3.filter(im, null), 0, 0, this);
+        // AffineTransform xForm = new AffineTransform();
+        // xForm.setToRotation(Math.PI / 4, im.getWidth(), im.getHeight() * 3);
+        // AffineTransformOp op3 = new AffineTransformOp(xForm,
+        // AffineTransformOp.TYPE_BILINEAR);
+        // g2.drawImage(op3.filter(im, null), 0, 0, this);
 
         // dashed line
         // g2.setStroke(new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
