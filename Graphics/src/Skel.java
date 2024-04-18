@@ -103,11 +103,12 @@ class JApp1Panel extends JPanel {
         gp.lineTo(250, 470);
         gp.lineTo(250, 450);
         gp.lineTo(250, 525);
-        gp.quadTo(350, 550, 450, 525);
+        gp.quadTo(350, 560, 450, 525);
         gp.lineTo(450, 450);
         gp.moveTo(450, 470);
         gp.lineTo(490, 450);
         gp.quadTo(480, 410, 450,  375);
+        gp.quadTo(350, 425, 250, 375);
 
         return gp;
     }
@@ -115,13 +116,16 @@ class JApp1Panel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setStroke(new BasicStroke(3));
+        g2.setStroke(new BasicStroke(5));
         g2.draw(drawRabbitHead());
         g2.draw(drawRabbitEars());
         drawRabbitEye(g2);
-        g2.setStroke(new BasicStroke(5));
+        g2.setStroke(new BasicStroke(7));
         drawRabbitMouth(g2);
-        g2.setStroke(new BasicStroke(3));
+        g2.setStroke(new BasicStroke(5));
+        g2.setPaint(new Color(255, 100, 0));
+        g2.fill(drawRabbitBody());
+        g2.setPaint(Color.black);
         g2.draw(drawRabbitBody());
 
 
