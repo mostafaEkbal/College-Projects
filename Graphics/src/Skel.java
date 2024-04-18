@@ -91,6 +91,27 @@ class JApp1Panel extends JPanel {
         g2.fill(eye2);
     }
 
+    public void drawRabbitMouth(Graphics2D g2) {
+        g2.drawLine(340 , 360, 360, 370);
+        g2.drawLine(340 , 370, 360, 360);
+    }
+
+    public GeneralPath drawRabbitBody() {
+        GeneralPath gp = new GeneralPath();
+        gp.moveTo(250, 375);
+        gp.quadTo(220, 400, 210, 450);
+        gp.lineTo(250, 470);
+        gp.lineTo(250, 450);
+        gp.lineTo(250, 525);
+        gp.quadTo(350, 550, 450, 525);
+        gp.lineTo(450, 450);
+        gp.moveTo(450, 470);
+        gp.lineTo(490, 450);
+        gp.quadTo(480, 410, 450,  375);
+
+        return gp;
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -99,10 +120,9 @@ class JApp1Panel extends JPanel {
         g2.draw(drawRabbitEars());
         drawRabbitEye(g2);
         g2.setStroke(new BasicStroke(5));
-        g2.drawLine(340 , 360, 360, 370);
-        g2.drawLine(340 , 370, 360, 360);
-
-
+        drawRabbitMouth(g2);
+        g2.setStroke(new BasicStroke(3));
+        g2.draw(drawRabbitBody());
 
 
         // Lesson 11
