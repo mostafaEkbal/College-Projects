@@ -73,9 +73,9 @@ class JApp1Panel extends JPanel {
     public GeneralPath drawRabbitEars() {
         GeneralPath gp = new GeneralPath();
         gp.moveTo(235, 235);
-        gp.quadTo(275, 0, 340, 230);
+        gp.quadTo(275, -100, 340, 230);
         gp.lineTo(360, 230);
-        gp.quadTo(400, 0, 465, 235);
+        gp.quadTo(400, -100, 465, 235);
 
         return gp;
     }
@@ -124,6 +124,19 @@ class JApp1Panel extends JPanel {
         g2.draw(qd2);
     }
 
+    public GeneralPath drawRabbitLegs() {
+        GeneralPath gp = new GeneralPath();
+        gp.moveTo(270, 530);
+        gp.quadTo(250, 560, 270, 580);
+        gp.lineTo(350, 580);
+        gp.lineTo(350, 545);
+        gp.moveTo(350, 580);
+        gp.lineTo(430, 580);
+        gp.quadTo(450, 560, 430, 530);
+
+        return gp;
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -143,6 +156,8 @@ class JApp1Panel extends JPanel {
         g2.fill(drawRabbitButton());
         g2.setPaint(Color.black);
         drawRabbitChemise(g2);
+        g2.draw(drawRabbitLegs());
+
 
 
 
