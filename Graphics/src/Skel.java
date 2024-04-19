@@ -137,6 +137,13 @@ class JApp1Panel extends JPanel {
         return gp;
     }
 
+    public void drawRabbitHands(Graphics2D g2) {
+        QuadCurve2D qd1 = new QuadCurve2D.Double(210, 450, 200, 500, 250, 500);
+        g2.draw(qd1);
+        QuadCurve2D qd2 = new QuadCurve2D.Double(490, 450, 500, 500, 450, 500);
+        g2.draw(qd2);
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -157,7 +164,7 @@ class JApp1Panel extends JPanel {
         g2.setPaint(Color.black);
         drawRabbitChemise(g2);
         g2.draw(drawRabbitLegs());
-
+        drawRabbitHands(g2);
 
 
 
