@@ -148,19 +148,25 @@ class JApp1Panel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.translate(400, 300);
-        g2.setStroke(new BasicStroke(2));
+        g2.setStroke(new BasicStroke(1));
         double t = 0;
-        double x1 = 200.0f * Math.cos(t);
-        double y1 = 200.0f * Math.sin(t);
         double x2, y2;
         int n = 10;
-        for (int i = 0; i <= n; i++) {
-            t = 2*Math.PI/n*i;
-            x2 = 200.0f * Math.cos(t);
-            y2 = 200.0f * Math.sin(t);
-            g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
-            x1 = x2;
-            y1 = y2;
+        for (int j = 20; j >= 3; j--) {
+            double x1 = j * 10 * Math.cos(t);
+            double y1 = j * 10 * Math.sin(t);
+            for (int i = 0; i <= n; i++) {
+                t = 2*Math.PI/n*i;
+                x2 = j * 10 * Math.cos(t);
+                y2 = j * 10 * Math.sin(t);
+                g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+                x1 = x2;
+                y1 = y2;
+//                g2.drawLine(0, 0, (int) x1, (int) y1);
+                Ellipse2D e = new Ellipse2D.Double(x1, y1, 10, 10);
+                if(j == 3) g2.drawLine(0, 0,(int) x1, (int) y1);
+                g2.fill(e);
+            }
         }
 
 
