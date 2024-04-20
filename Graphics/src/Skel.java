@@ -147,24 +147,42 @@ class JApp1Panel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setStroke(new BasicStroke(5));
-        g2.draw(drawRabbitHead());
-        g2.draw(drawRabbitEars());
-        drawRabbitEye(g2);
-        g2.setStroke(new BasicStroke(7));
-        drawRabbitMouth(g2);
-        g2.setStroke(new BasicStroke(5));
-        g2.setPaint(new Color(255, 100, 0));
-        g2.fill(drawRabbitBody());
-        g2.setPaint(Color.black);
-        g2.draw(drawRabbitBody());
-        g2.draw(drawRabbitButton());
-        g2.setPaint(Color.WHITE);
-        g2.fill(drawRabbitButton());
-        g2.setPaint(Color.black);
-        drawRabbitChemise(g2);
-        g2.draw(drawRabbitLegs());
-        drawRabbitHands(g2);
+        g2.translate(400, 300);
+        g2.setStroke(new BasicStroke(2));
+        double t = 0;
+        double x1 = 200.0f * Math.cos(t);
+        double y1 = 200.0f * Math.sin(t);
+        double x2, y2;
+        int n = 10;
+        for (int i = 0; i <= n; i++) {
+            t = 2*Math.PI/n*i;
+            x2 = 200.0f * Math.cos(t);
+            y2 = 200.0f * Math.sin(t);
+            g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+            x1 = x2;
+            y1 = y2;
+        }
+
+
+        // draw Rabbit
+//        g2.setStroke(new BasicStroke(7));
+//        g2.draw(drawRabbitHead());
+//        g2.draw(drawRabbitEars());
+//        drawRabbitEye(g2);
+//        g2.setStroke(new BasicStroke(9));
+//        drawRabbitMouth(g2);
+//        g2.setStroke(new BasicStroke(7));
+//        g2.setPaint(new Color(255, 100, 0));
+//        g2.fill(drawRabbitBody());
+//        g2.setPaint(Color.black);
+//        g2.draw(drawRabbitBody());
+//        g2.draw(drawRabbitButton());
+//        g2.setPaint(Color.WHITE);
+//        g2.fill(drawRabbitButton());
+//        g2.setPaint(Color.black);
+//        drawRabbitChemise(g2);
+//        g2.draw(drawRabbitLegs());
+//        drawRabbitHands(g2);
 
 
 
@@ -302,23 +320,26 @@ class JApp1Panel extends JPanel {
         // g2.fill(a1);
 
         // Second Lesson
-        // g2.translate(200, 200);
-        // double r1=60.0f, r2=50.0f, p=70.0f;
-        // double a=100, b=200, kx=3, ky=2;
-        // double t=0;
-        // double minRange=0, maxRange=2*Math.PI;
-        // int nPoints=1000;
-        // double x1 = a * Math.cos(kx * t);
-        // double y1 = b * Math.sin(ky * t);
-        // double x2;
-        // double y2;
-        // for (int i=1; i<nPoints; i+=5){
-        // t= 12*Math.PI/nPoints* i;
-        // x2 = a * Math.cos(kx * t);
-        // y2 = b * Math.sin(ky * t);
-        // g2.drawLine((int) x1, (int)y1, (int)x2, (int)y2);
-        // x1=x2;
-        // y1=y2;}
+//         g2.setStroke(new BasicStroke(7));
+//         g2.translate(200, 200);
+//         double r1=60.0f, r2=50.0f, p=70.0f;
+//         double a=100, b=200, kx=3, ky=2;
+//         double t=0;
+//         double minRange=0, maxRange=2*Math.PI;
+//         int nPoints=1000;
+//         double a1 = Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5);
+//         double x1 = (r1 + r2) * Math.cos(t) - p* Math.cos((r1+r2) * t/r2);
+//         double y1 = (r1 + r2) * Math.sin(t) - p* Math.sin((r1+r2) * t/r2);
+//         double x2;
+//         double y2;
+//         for (int i=1; i<=nPoints; i+=5){
+//         t= 12.0f*Math.PI/nPoints* (float)i;
+//         a1 = Math.exp(Math.cos(t)) - 2 * Math.cos(4 * t) - Math.pow(Math.sin(t / 12), 5);
+//         x2 = (r1 + r2) * Math.cos(t) - p* Math.cos((r1+r2) * t/r2);
+//         y2 = (r1 + r2) * Math.sin(t) - p* Math.sin((r1+r2) * t/r2);
+//         g2.drawLine((int) x1, (int)y1, (int)x2, (int)y2);
+//         x1=x2;
+//         y1=y2;}
 
         // First Lesson
         // for(int i = 0; i <= 100; i++) {
