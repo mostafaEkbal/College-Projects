@@ -81,12 +81,14 @@ class Q1 extends JPanel implements ActionListener {
 class Q2 extends JPanel implements ActionListener {
     public double rotationRate = 0;
     public int translationRange = 0;
+    public int redChangingRate = 255;
+    public int alphaChangingRate = 255;
     public boolean falling = true;
 
     public Q2() {
         setPreferredSize(new Dimension(1200, 800));
         setBackground(Color.white);
-        Timer timer = new Timer(100, this);
+        Timer timer = new Timer(50, this);
         timer.start();
     }
 
@@ -97,12 +99,12 @@ class Q2 extends JPanel implements ActionListener {
         AffineTransform afr2 = new AffineTransform();
         Rectangle2D r1 = new Rectangle2D.Double(200, 200, 100, 100);
         Rectangle2D r2 = new Rectangle2D.Double(200, 200, 100, 100);
-        g2.setColor(new Color(1.0f, 0 , 0, .5f));
+        g2.setColor(new Color(redChangingRate, 0 , 0, alphaChangingRate));
         afr2.translate(0, translationRange);
         afr2.rotate(150.0f, r2.getX() + r2.getWidth() / 2, r2.getY() + r2.getHeight() /2);
         afr2.rotate(rotationRate, r2.getX() + r2.getWidth() / 2, r2.getY() + r2.getHeight() /2);
         g2.fill(afr2.createTransformedShape(r2));
-        AlphaComposite a = AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, .5f);
+        AlphaComposite a = AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, 1f);
         g2.setComposite(a);
         afr1.translate(0, translationRange);
         afr1.rotate(rotationRate, r1.getX() + r1.getWidth() / 2, r1.getY() + r1.getHeight() /2);
@@ -110,13 +112,28 @@ class Q2 extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        rotationRate += 45.0f;
+        rotationRate += 22.5f;
         if(rotationRate == 360) rotationRate= 45.0f;
-        if(falling) translationRange += 10;
-        else translationRange -= 10;
-        if(translationRange == 500) falling = false;
-        if(translationRange == -200) falling = true;
-
+        if(translationRange == getHeight() - 300 ) {
+            falling = false;
+            alphaChangingRate = 255;
+            redChangingRate = 0;
+        }
+        if(translationRange == getHeight() - 1000) {
+            falling = true;
+            alphaChangingRate = 255;
+            redChangingRate = 255;
+        }
+        if(falling) {
+            translationRange += 10;
+            redChangingRate -= 3;
+            alphaChangingRate -= 3;
+            repaint();
+            return;
+        }
+        translationRange -= 10;
+        redChangingRate += 3;
+        alphaChangingRate -= 3;
         repaint();
     }
 }
