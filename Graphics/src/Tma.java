@@ -79,7 +79,9 @@ class Q1 extends JPanel implements ActionListener {
 }
 
 class Q2 extends JPanel implements ActionListener {
-    public double rotationRange = 0;
+    public double rotationRate = 0;
+    public int translationRange = 0;
+    public boolean falling = true;
 
     public Q2() {
         setPreferredSize(new Dimension(1200, 800));
@@ -96,18 +98,25 @@ class Q2 extends JPanel implements ActionListener {
         Rectangle2D r1 = new Rectangle2D.Double(200, 200, 100, 100);
         Rectangle2D r2 = new Rectangle2D.Double(200, 200, 100, 100);
         g2.setColor(new Color(1.0f, 0 , 0, .5f));
+        afr2.translate(0, translationRange);
         afr2.rotate(150.0f, r2.getX() + r2.getWidth() / 2, r2.getY() + r2.getHeight() /2);
-        afr2.rotate(rotationRange, r2.getX() + r2.getWidth() / 2, r2.getY() + r2.getHeight() /2);
+        afr2.rotate(rotationRate, r2.getX() + r2.getWidth() / 2, r2.getY() + r2.getHeight() /2);
         g2.fill(afr2.createTransformedShape(r2));
         AlphaComposite a = AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, .5f);
         g2.setComposite(a);
-        afr1.rotate(rotationRange, r1.getX() + r1.getWidth() / 2, r1.getY() + r1.getHeight() /2);
+        afr1.translate(0, translationRange);
+        afr1.rotate(rotationRate, r1.getX() + r1.getWidth() / 2, r1.getY() + r1.getHeight() /2);
         g2.fill(afr1.createTransformedShape(r1));
     }
 
     public void actionPerformed(ActionEvent e) {
-        rotationRange += 45.0f;
-        if(rotationRange == 180) rotationRange= 0;
+        rotationRate += 45.0f;
+        if(rotationRate == 360) rotationRate= 45.0f;
+        if(falling) translationRange += 10;
+        else translationRange -= 10;
+        if(translationRange == 500) falling = false;
+        if(translationRange == -200) falling = true;
+
         repaint();
     }
 }
