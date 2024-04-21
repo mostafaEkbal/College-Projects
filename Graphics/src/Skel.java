@@ -19,16 +19,22 @@ public class Skel extends JApplet {
     }
 
     public void init() {
-        JPanel panel = new JApp1Panel();
+        JPanel panel = new RainPanel();
         getContentPane().add(panel);
     }
 
 }
 
-class JApp1Panel extends JPanel {
-    public JApp1Panel() {
-        setPreferredSize(new Dimension(800, 800));
-    }
+class RainPanel extends JPanel implements Runnable{
+    Point2D.Double[] pts = new Point2D.Double[1200];
+    public RainPanel() {
+        setPreferredSize(new Dimension(640, 480));
+        setBackground(Color.gray);
+        for (int i = 0; i < pts.length; i++) {
+            pts[i] = new Point2D.Double(Math.random(), Math.random());
+        }
+        Thread thread = new Thread(this);
+        thread.start();  }
 
     public Arc2D createEarLeft(double x, double y) {
         return new Arc2D.Double(x, y, 75, 100, 90, 180, Arc2D.OPEN);
@@ -147,30 +153,38 @@ class JApp1Panel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.translate(400, 300);
-        g2.setStroke(new BasicStroke(1));
-        double t = 0;
-        double x2, y2;
-        int n = 10;
-        for (int j = 20; j >= 3; j--) {
-            double x1 = j * 10 * Math.cos(t);
-            double y1 = j * 10 * Math.sin(t);
-            for (int i = 0; i <= n; i++) {
-                t = 2*Math.PI/n*i;
-                x2 = j * 10 * Math.cos(t);
-                y2 = j * 10 * Math.sin(t);
-                g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
-                x1 = x2;
-                y1 = y2;
-//                g2.drawLine(0, 0, (int) x1, (int) y1);
-                Ellipse2D e = new Ellipse2D.Double(x1, y1, 10, 10);
-                if(j == 3) g2.drawLine(0, 0,(int) x1, (int) y1);
-                g2.fill(e);
-            }
-        }
+        g.setColor(Color.white);
+        for (int i = 0; i < pts.length; i++) {
+            int x = (int)(640*pts[i].x);
+            int y = (int)(480*pts[i].y);
+            int h = (int)(25*Math.random());
+            g.drawLine(x, y, x, y+h);}
 
 
-        // draw Rabbit
+            // Exercise 4 TMA
+//        g2.translate(400, 300);
+//        double t = 0;
+//        double x2, y2;
+//        int n = 10;
+//        for (int j = 20; j >= 3; j--) {
+//            double x1 = j * 10 * Math.cos(t);
+//            double y1 = j * 10 * Math.sin(t);
+//            for (int i = 0; i <= n; i++) {
+//                t = 2*Math.PI/n*i;
+//                x2 = j * 10 * Math.cos(t);
+//                y2 = j * 10 * Math.sin(t);
+//                g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+//                x1 = x2;
+//                y1 = y2;
+////                g2.drawLine(0, 0, (int) x1, (int) y1);
+//                Ellipse2D e = new Ellipse2D.Double(x1, y1, 10, 10);
+//                if(j == 3) g2.drawLine(0, 0,(int) x1, (int) y1);
+//                g2.fill(e);
+//            }
+//        }
+
+
+        // draw Rabbit (Exercise 2 TMA)
 //        g2.setStroke(new BasicStroke(7));
 //        g2.draw(drawRabbitHead());
 //        g2.draw(drawRabbitEars());
@@ -356,5 +370,21 @@ class JApp1Panel extends JPanel {
         // g.drawLine(1000 - i * 10, 0, 0, 1000 - i * 10);
         // }
     }
+    public void run() {
+        while(true) {
+            for (int i = 0; i < pts.length; i++) {
+                double x = pts[i].getX();
+                double y = pts[i].getY();
+                y += 0.1*Math.random();
+                if (y > 1) {
+                    y = 0.3*Math.random();
+                    x = Math.random();
+                }
+                pts[i].setLocation(x, y);}
+            repaint();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {}
+        }  }
 
 }// end of JApp1Panel class
