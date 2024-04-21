@@ -13,9 +13,9 @@ public class Tma extends JApplet{
         JFrame frame = new JFrame();
         frame.setTitle("TmaQ1");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JApplet applete = new Tma();
-        applete.init();
-        frame.getContentPane().add(applete);
+        JApplet applet = new Tma();
+        applet.init();
+        frame.getContentPane().add(applet);
         frame.pack();
         frame.setVisible(true);
     }
@@ -38,8 +38,6 @@ class Line {
 }
 
 class Q1 extends JPanel implements ActionListener {
-    double r = Math.random() * 100;
-    private int x1, y1, x2, y2;
 
     ArrayList<Line> lines = new ArrayList<>();
 
@@ -56,22 +54,23 @@ class Q1 extends JPanel implements ActionListener {
         Font font = new Font("Serif", Font.BOLD, 150);
         FontRenderContext frc = g2.getFontRenderContext();
         GlyphVector gv = font.createGlyphVector(frc, "TMA240 TMA");
-        Shape glyph = gv.getOutline(100, 200);
+        Shape glyph = gv.getOutline(200, 400);
         g2.clip(glyph);
 
 
         for (Line line : lines) {
+            // draw the early generated lines
             g2.drawLine((int) line.x1, (int) line.y1, (int) line.x2, (int) line.y2);
         }
 
-        // Generate random coordinates for the new line
-        double x1 = Math.random() * getWidth();
-        double y1 = Math.random() * getHeight();
-        double x2 = Math.random() * getWidth();
-        double y2 = Math.random() * getHeight();
+        for (int i = 0; i < 100; i++) {
+            // Generate random coordinates for the new line
+            Line l = new Line((int) (Math.random() * getWidth()), (int) (Math.random() * getHeight()), (int) (Math.random() * getWidth()), (int) (Math.random() * getHeight()));
+            g2.drawLine((int) l.x1, (int) l.y1, (int) l.x2, (int) l.y2);
+            // Store the new line
+            lines.add(l);
+        }
 
-        // Store the new line
-        lines.add(new Line(x1, y1, x2, y2));
     }
     public void actionPerformed(ActionEvent e) {
         repaint();
