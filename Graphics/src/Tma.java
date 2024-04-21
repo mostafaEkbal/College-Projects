@@ -6,6 +6,7 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 public class Tma extends JApplet{
@@ -21,7 +22,7 @@ public class Tma extends JApplet{
     }
 
     public void init() {
-        JPanel panel = new Q1();
+        JPanel panel = new Q2();
         getContentPane().add(panel);
     }
 }
@@ -73,6 +74,40 @@ class Q1 extends JPanel implements ActionListener {
 
     }
     public void actionPerformed(ActionEvent e) {
+        repaint();
+    }
+}
+
+class Q2 extends JPanel implements ActionListener {
+    public double rotationRange = 0;
+
+    public Q2() {
+        setPreferredSize(new Dimension(1200, 800));
+        setBackground(Color.white);
+        Timer timer = new Timer(100, this);
+        timer.start();
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        AffineTransform afr1 = new AffineTransform();
+        AffineTransform afr2 = new AffineTransform();
+        Rectangle2D r1 = new Rectangle2D.Double(200, 200, 100, 100);
+        Rectangle2D r2 = new Rectangle2D.Double(200, 200, 100, 100);
+        g2.setColor(new Color(1.0f, 0 , 0, .5f));
+        afr2.rotate(150.0f, r2.getX() + r2.getWidth() / 2, r2.getY() + r2.getHeight() /2);
+        afr2.rotate(rotationRange, r2.getX() + r2.getWidth() / 2, r2.getY() + r2.getHeight() /2);
+        g2.fill(afr2.createTransformedShape(r2));
+        AlphaComposite a = AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, .5f);
+        g2.setComposite(a);
+        afr1.rotate(rotationRange, r1.getX() + r1.getWidth() / 2, r1.getY() + r1.getHeight() /2);
+        g2.fill(afr1.createTransformedShape(r1));
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        rotationRange += 45.0f;
+        if(rotationRange == 180) rotationRange= 0;
         repaint();
     }
 }
