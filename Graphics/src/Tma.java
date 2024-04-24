@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Tma extends JApplet{
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        frame.setTitle("TmaQ1");
+        frame.setTitle("Tma");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JApplet applet = new Tma();
         applet.init();
@@ -45,7 +45,7 @@ class Q1 extends JPanel implements ActionListener {
     public Q1() {
         setPreferredSize(new Dimension(1600, 800));
         setBackground(Color.white);
-        Timer timer = new Timer(500, this);
+        Timer timer = new Timer(200, this);
         timer.start();
     }
 
@@ -112,7 +112,7 @@ class Q2 extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        rotationRate += 22.5f;
+        rotationRate += 45.0f;
         if(rotationRate == 360) rotationRate= 45.0f;
         if(translationRange == getHeight() - 300 ) {
             falling = false;
