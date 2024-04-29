@@ -4,3 +4,6 @@ package-lock.json
 
 # Settings
 .vscode/
+
+# Checkpoints dir
+DataScience/.ipynb_checkpoints/

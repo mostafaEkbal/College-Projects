@@ -73,9 +73,9 @@ class JApp1Panel extends JPanel {
     public GeneralPath drawRabbitEars() {
         GeneralPath gp = new GeneralPath();
         gp.moveTo(235, 235);
-        gp.quadTo(275, -100, 340, 230);
+        gp.quadTo(275, -50, 340, 230);
         gp.lineTo(360, 230);
-        gp.quadTo(400, -100, 465, 235);
+        gp.quadTo(400, -50, 465, 235);
 
         return gp;
     }
@@ -147,48 +147,49 @@ class JApp1Panel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.translate(400, 300);
-        g2.setStroke(new BasicStroke(1));
-        double t = 0;
-        double x2, y2;
-        int n = 10;
-        for (int j = 20; j >= 3; j--) {
-            double x1 = j * 10 * Math.cos(t);
-            double y1 = j * 10 * Math.sin(t);
-            for (int i = 0; i <= n; i++) {
-                t = 2*Math.PI/n*i;
-                x2 = j * 10 * Math.cos(t);
-                y2 = j * 10 * Math.sin(t);
-                g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
-                x1 = x2;
-                y1 = y2;
-//                g2.drawLine(0, 0, (int) x1, (int) y1);
-                Ellipse2D e = new Ellipse2D.Double(x1, y1, 10, 10);
-                if(j == 3) g2.drawLine(0, 0,(int) x1, (int) y1);
-                g2.fill(e);
-            }
-        }
+
+        // draw spider house
+//        g2.translate(400, 300);
+//        double t = 0;
+//        double x2, y2;
+//        int n = 10;
+//        for (int j = 20; j >= 3; j--) {
+//            double x1 = j * 10 * Math.cos(t);
+//            double y1 = j * 10 * Math.sin(t);
+//            for (int i = 0; i <= n; i++) {
+//                t = 2*Math.PI/n*i;
+//                x2 = j * 10 * Math.cos(t);
+//                y2 = j * 10 * Math.sin(t);
+//                g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+//                x1 = x2;
+//                y1 = y2;
+////                g2.drawLine(0, 0, (int) x1, (int) y1);
+//                Ellipse2D e = new Ellipse2D.Double(x1, y1, 10, 10);
+//                if(j == 3) g2.drawLine(0, 0,(int) x1, (int) y1);
+//                g2.fill(e);
+//            }
+//        }
 
 
         // draw Rabbit
-//        g2.setStroke(new BasicStroke(7));
-//        g2.draw(drawRabbitHead());
-//        g2.draw(drawRabbitEars());
-//        drawRabbitEye(g2);
-//        g2.setStroke(new BasicStroke(9));
-//        drawRabbitMouth(g2);
-//        g2.setStroke(new BasicStroke(7));
-//        g2.setPaint(new Color(255, 100, 0));
-//        g2.fill(drawRabbitBody());
-//        g2.setPaint(Color.black);
-//        g2.draw(drawRabbitBody());
-//        g2.draw(drawRabbitButton());
-//        g2.setPaint(Color.WHITE);
-//        g2.fill(drawRabbitButton());
-//        g2.setPaint(Color.black);
-//        drawRabbitChemise(g2);
-//        g2.draw(drawRabbitLegs());
-//        drawRabbitHands(g2);
+        g2.setStroke(new BasicStroke(7));
+        g2.draw(drawRabbitHead());
+        g2.draw(drawRabbitEars());
+        drawRabbitEye(g2);
+        g2.setStroke(new BasicStroke(9));
+        drawRabbitMouth(g2);
+        g2.setStroke(new BasicStroke(7));
+        g2.setPaint(new Color(255, 100, 0));
+        g2.fill(drawRabbitBody());
+        g2.setPaint(Color.black);
+        g2.draw(drawRabbitBody());
+        g2.draw(drawRabbitButton());
+        g2.setPaint(Color.WHITE);
+        g2.fill(drawRabbitButton());
+        g2.setPaint(Color.black);
+        drawRabbitChemise(g2);
+        g2.draw(drawRabbitLegs());
+        drawRabbitHands(g2);
 
 
 
