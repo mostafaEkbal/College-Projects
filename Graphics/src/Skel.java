@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.geom.*;
+import java.util.Arrays;
 
 public class Skel extends JApplet {
 
@@ -16,6 +17,8 @@ public class Skel extends JApplet {
         frame.getContentPane().add(applete);
         frame.pack();
         frame.setVisible(true);
+        System.out.println(7 << 5);
+        System.out.println(Integer.toBinaryString(7 << 5));
     }
 
     public void init() {
@@ -151,13 +154,19 @@ class JApp1Panel extends JPanel {
         // lesson 13
         double Zr=0,Zi=0;//Z
         double Cr=0.2,Ci=0.3;//C
-        for (int i=0;i<10;i++)
+        double magSq;
+        int [] rgb = new int[3];
+        int i;
+        for (i=0;i<512;i++)
         {
             double temp = Zr * Zr - Zi * Zi + Cr;//real part of Zn+1
             Zi = 2 * Zr * Zi + Ci;//imaginary part of Zn+1
             Zr = temp;
-            g2.drawString(Zr+"+i"+Zi, 10, i*50  );
+            magSq = Zr * Zr + Zi * Zi;
+            if (magSq>=4)
+                break;
         }
+
 
 
         // draw spider house
