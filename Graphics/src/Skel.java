@@ -148,6 +148,18 @@ class JApp1Panel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
+        // lesson 13
+        double Zr=0,Zi=0;//Z
+        double Cr=0.2,Ci=0.3;//C
+        for (int i=0;i<10;i++)
+        {
+            double temp = Zr * Zr - Zi * Zi + Cr;//real part of Zn+1
+            Zi = 2 * Zr * Zi + Ci;//imaginary part of Zn+1
+            Zr = temp;
+            g2.drawString(Zr+"+i"+Zi, 10, i*50  );
+        }
+
+
         // draw spider house
 //        g2.translate(400, 300);
 //        double t = 0;
@@ -172,24 +184,24 @@ class JApp1Panel extends JPanel {
 
 
         // draw Rabbit
-        g2.setStroke(new BasicStroke(7));
-        g2.draw(drawRabbitHead());
-        g2.draw(drawRabbitEars());
-        drawRabbitEye(g2);
-        g2.setStroke(new BasicStroke(9));
-        drawRabbitMouth(g2);
-        g2.setStroke(new BasicStroke(7));
-        g2.setPaint(new Color(255, 100, 0));
-        g2.fill(drawRabbitBody());
-        g2.setPaint(Color.black);
-        g2.draw(drawRabbitBody());
-        g2.draw(drawRabbitButton());
-        g2.setPaint(Color.WHITE);
-        g2.fill(drawRabbitButton());
-        g2.setPaint(Color.black);
-        drawRabbitChemise(g2);
-        g2.draw(drawRabbitLegs());
-        drawRabbitHands(g2);
+//        g2.setStroke(new BasicStroke(7));
+//        g2.draw(drawRabbitHead());
+//        g2.draw(drawRabbitEars());
+//        drawRabbitEye(g2);
+//        g2.setStroke(new BasicStroke(9));
+//        drawRabbitMouth(g2);
+//        g2.setStroke(new BasicStroke(7));
+//        g2.setPaint(new Color(255, 100, 0));
+//        g2.fill(drawRabbitBody());
+//        g2.setPaint(Color.black);
+//        g2.draw(drawRabbitBody());
+//        g2.draw(drawRabbitButton());
+//        g2.setPaint(Color.WHITE);
+//        g2.fill(drawRabbitButton());
+//        g2.setPaint(Color.black);
+//        drawRabbitChemise(g2);
+//        g2.draw(drawRabbitLegs());
+//        drawRabbitHands(g2);
 
 
 
