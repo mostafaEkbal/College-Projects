@@ -1,6 +1,9 @@
 import java.awt.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.font.FontRenderContext;
+import java.awt.font.GlyphVector;
+import java.awt.font.LineMetrics;
 import java.awt.geom.*;
 import java.awt.image.*;
 import java.io.File;
@@ -276,23 +279,49 @@ class JApp1Panel extends JPanel {
         // g2.fill(af.createTransformedShape(e));
 
         // lesson 5
-        // Font font = new Font("Serif", Font.BOLD, 150);
-        // AffineTransform af = new AffineTransform();
-        //
-        // FontRenderContext frc = g2.getFontRenderContext();
-        // GlyphVector gv = font.createGlyphVector(frc, "Java");
-        // Shape glyph = gv.getOutline(100, 200);
-        // g2.clip(glyph);
-        // Ellipse2D e = new Ellipse2D.Double(0, 0, 25, 25);
-        // g2.draw(e);
-        // for (int i = 0; i < 100; i++){
-        // af.setToTranslation(0, i*10);
-        // for (int j = 0; j < 100; j++){
-        // af.translate(10, 0);
-        // g2.draw(af.createTransformedShape(e));
-        // }
-        //
-        // }
+        Font font = new Font("Serif", Font.BOLD, 100);
+//        AffineTransform tx = new AffineTransform();
+//        tx.shear(0.5, 0);
+//        g2.setFont(font.deriveFont(tx));
+//        g2.drawString("Derived font", 100, 100);
+//        g2.setFont(font);
+//        FontRenderContext frc = g2.getFontRenderContext();
+//        String str = "String bounds";
+//        Rectangle2D bounds = font.getStringBounds(str, frc);
+//        g2.translate(100, 200);
+//        g2.draw(bounds);
+//        g2.drawString(str, 0, 0);
+//        str = "Baseline, ascent, descent, leading";
+//        g2.translate(0,100);
+//        int w = (int)font.getStringBounds(str, frc).getWidth();
+//        LineMetrics lm = font.getLineMetrics(str, frc);
+//        g2.setColor(Color.CYAN);
+//        g2.drawLine(0, 0, w, 0);
+//        int y = -(int)lm.getAscent();
+//        g2.setColor(Color.PINK);
+//        g2.drawLine(0, y, w, y);
+//        y = (int)lm.getDescent();
+//        g2.setColor(Color.RED);
+//        g2.drawLine(0, y, w, y);
+//        y = (int)(lm.getDescent()+lm.getLeading());
+//        g2.setColor(Color.GREEN);
+//        g2.drawLine(0, y, w, y);
+//        g2.setColor(Color.BLACK);
+//        g2.drawString(str,0,0);
+         AffineTransform af = new AffineTransform();
+
+         FontRenderContext frc = g2.getFontRenderContext();
+         GlyphVector gv = font.createGlyphVector(frc, "Java");
+//         Shape glyph = gv.getOutline(100, 200);
+         g2.clip(gv.getOutline(100, 200));
+         Ellipse2D e = new Ellipse2D.Double(0, 0, 25, 25);
+         for (int i = 0; i < 100; i++){
+         af.setToTranslation(0, i*10);
+             for (int j = 0; j < 100; j++){
+                 af.translate(10, 0);
+                 g2.draw(af.createTransformedShape(e));
+             }
+         }
 
         // lesson 4
         // AffineTransform af = new AffineTransform();
