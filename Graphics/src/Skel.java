@@ -256,30 +256,47 @@ class JApp1Panel extends JPanel {
 //         g2.drawImage(op3.filter(im, null), im.getWidth() * 2, im.getHeight(), this);
 
         // dashed line
-        // g2.setStroke(new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
-        // 0, new float[]{10.0f, 10.0f}, 0));
+//         g2.setStroke(new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
+//         0, new float[]{10.0f, 10.0f}, 0));
 
         // fill gradient
-        // GradientPaint paint = new GradientPaint(100, 200, Color.red, 105, 200,
-        // Color.green, true);
-        // g2.setPaint(paint);
-        // g2.fillRect(0, 0, 1000, 1000);
+
+        // Center of the rectangle
+        int centerX = 300;
+        int centerY = 500;
+        int width = 300;
+        int height = 300;
+
+        // Top left corner of the rectangle
+        int x = centerX - width / 2;
+        int y = centerY - height / 2;
+
+        // Create the gradient paint from top left to bottom right
+        Color topLeftColor = new Color(0.9f, 0, 0);
+        Color bottomRightColor = new Color(0.3f, 0, 0.8f);
+        GradientPaint gradient = new GradientPaint(x, y, topLeftColor, x + width, y + height, bottomRightColor);
+
+        // Set the paint to the gradient
+        g2.setPaint(gradient);
+
+        // Draw the rectangle
+        g2.fillRect(x, y, width, height);;
 
         // Composite and transparency
-        // Ellipse2D e = new Ellipse2D.Double(100, 100, 300, 100);
-        //
-        // g2.fill(e);
-        //
-        // AlphaComposite a = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f);
-        // g2.setComposite(a);
-        //
-        // AffineTransform af = new AffineTransform();
-        // af.rotate(Math.PI / 2, 100+ 150, 100 + 50);
-        // g2.setColor(Color.CYAN);
-        // g2.fill(af.createTransformedShape(e));
+//         Ellipse2D e = new Ellipse2D.Double(100, 100, 300, 100);
+//         g2.draw(e);
+//         g2.fill(e);
+//
+//         AlphaComposite a = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f);
+//         g2.setComposite(a);
+//
+//         AffineTransform af = new AffineTransform();
+//         af.rotate(Math.PI / 2, 100+ 150, 100 + 50);
+//         g2.setColor(Color.CYAN);
+//         g2.fill(af.createTransformedShape(e));
 
         // lesson 5
-        Font font = new Font("Serif", Font.BOLD, 100);
+//        Font font = new Font("Serif", Font.BOLD, 100);
 //        AffineTransform tx = new AffineTransform();
 //        tx.shear(0.5, 0);
 //        g2.setFont(font.deriveFont(tx));
@@ -308,20 +325,20 @@ class JApp1Panel extends JPanel {
 //        g2.drawLine(0, y, w, y);
 //        g2.setColor(Color.BLACK);
 //        g2.drawString(str,0,0);
-         AffineTransform af = new AffineTransform();
-
-         FontRenderContext frc = g2.getFontRenderContext();
-         GlyphVector gv = font.createGlyphVector(frc, "Java");
-//         Shape glyph = gv.getOutline(100, 200);
-         g2.clip(gv.getOutline(100, 200));
-         Ellipse2D e = new Ellipse2D.Double(0, 0, 25, 25);
-         for (int i = 0; i < 100; i++){
-         af.setToTranslation(0, i*10);
-             for (int j = 0; j < 100; j++){
-                 af.translate(10, 0);
-                 g2.draw(af.createTransformedShape(e));
-             }
-         }
+//         AffineTransform af = new AffineTransform();
+//
+//         FontRenderContext frc = g2.getFontRenderContext();
+//         GlyphVector gv = font.createGlyphVector(frc, "Java");
+////         Shape glyph = gv.getOutline(100, 200);
+//         g2.clip(gv.getOutline(100, 200));
+//         Ellipse2D e = new Ellipse2D.Double(0, 0, 25, 25);
+//         for (int i = 0; i < 100; i++){
+//         af.setToTranslation(0, i*10);
+//             for (int j = 0; j < 100; j++){
+//                 af.translate(10, 0);
+//                 g2.draw(af.createTransformedShape(e));
+//             }
+//         }
 
         // lesson 4
         // AffineTransform af = new AffineTransform();

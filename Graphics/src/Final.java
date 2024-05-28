@@ -39,14 +39,11 @@ class DropletPanel extends JPanel implements Runnable {
     public void run() {
         while (true) {
             for (int i = 0; i < droplets.length - 1; i++) {
-                double x = droplets[i].getX();
-                double y = droplets[i].getY();
-                y += 0.1 * Math.random();
-                if (y > 1){
-                    y = 0.3 * Math.random();
-                    x = Math.random();
+                droplets[i].y += 0.1 * Math.random();
+                if (droplets[i].y > 1){
+                    droplets[i].y = 0.3 * Math.random();
+                    droplets[i].x = Math.random();
                 }
-                droplets[i].setLocation(x, y);
             }
             repaint();
             try {
