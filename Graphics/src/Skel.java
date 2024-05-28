@@ -1,6 +1,10 @@
 import java.awt.*;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.geom.*;
+import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Skel extends JApplet {
@@ -17,8 +21,6 @@ public class Skel extends JApplet {
         frame.getContentPane().add(applete);
         frame.pack();
         frame.setVisible(true);
-        System.out.println(7 << 5);
-        System.out.println(Integer.toBinaryString(7 << 5));
     }
 
     public void init() {
@@ -152,20 +154,20 @@ class JApp1Panel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
 
         // lesson 13
-        double Zr=0,Zi=0;//Z
-        double Cr=0.2,Ci=0.3;//C
-        double magSq;
-        int [] rgb = new int[3];
-        int i;
-        for (i=0;i<512;i++)
-        {
-            double temp = Zr * Zr - Zi * Zi + Cr;//real part of Zn+1
-            Zi = 2 * Zr * Zi + Ci;//imaginary part of Zn+1
-            Zr = temp;
-            magSq = Zr * Zr + Zi * Zi;
-            if (magSq>=4)
-                break;
-        }
+//        double Zr=0,Zi=0;//Z
+//        double Cr=0.2,Ci=0.3;//C
+//        double magSq;
+//        int [] rgb = new int[3];
+//        int i;
+//        for (i=0;i<512;i++)
+//        {
+//            double temp = Zr * Zr - Zi * Zi + Cr;//real part of Zn+1
+//            Zi = 2 * Zr * Zi + Ci;//imaginary part of Zn+1
+//            Zr = temp;
+//            magSq = Zr * Zr + Zi * Zi;
+//            if (magSq>=4)
+//                break;
+//        }
 
 
 
@@ -215,40 +217,40 @@ class JApp1Panel extends JPanel {
 
 
         // Lesson 11
-        // BufferedImage im = null;
-        // try {
-        // im = ImageIO.read(new File("N:\\about-image.png"));
-        // } catch (IOException e) {
-        // System.out.println('e');
-        // }
-
-        // assert im != null;
-        // g2.drawImage(im, 0, 0, this);
-
-        // RescaleOp li = new RescaleOp(1.2f, 0, null);
-        // g2.drawImage(li.filter(im, null), 0, im.getHeight(), this);
-
-        // RescaleOp da = new RescaleOp(.75f, 0, null);
-        // g2.drawImage(da.filter(im, null), im.getWidth(), 0, this);
-
-        // RescaleOp in = new RescaleOp(-1f, 255, null);
-        // g2.drawImage(in.filter(im, null), im.getWidth() * 2, 0, this);
-
-        // float[] sharpeningData = { 0f, -1f, 0f, -1f, 5f, -1f, 0f, -1f, 0f };
-        // Kernel ker1 = new Kernel(3, 3, sharpeningData);
-        // ConvolveOp op1 = new ConvolveOp(ker1);
-        // g2.drawImage(op1.filter(im, null), im.getWidth(), im.getHeight(), this);
-        // float[] noiseReductionData = { 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 /
-        // 9f, 1 / 9f, 1 / 9f, 1 / 9f };
-        // Kernel ker2 = new Kernel(3, 3, noiseReductionData);
-        // ConvolveOp op2 = new ConvolveOp(ker2);
-        // g2.drawImage(op2.filter(im, null), 0, 0, this);
-
-        // AffineTransform xForm = new AffineTransform();
-        // xForm.setToRotation(Math.PI / 4, im.getWidth(), im.getHeight() * 3);
-        // AffineTransformOp op3 = new AffineTransformOp(xForm,
-        // AffineTransformOp.TYPE_BILINEAR);
-        // g2.drawImage(op3.filter(im, null), 0, 0, this);
+//         BufferedImage im = null;
+//         try {
+//         im = ImageIO.read(new File("N:\\about-image.png"));
+//         } catch (IOException e) {
+//         System.out.println('e');
+//         }
+//
+//         assert im != null;
+//         g2.drawImage(im, 0, 0, this);
+//
+//         RescaleOp li = new RescaleOp(1.2f, 0, null);
+//         g2.drawImage(li.filter(im, null), 0, im.getHeight(), this);
+//
+//         RescaleOp da = new RescaleOp(.75f, 0, null);
+//         g2.drawImage(da.filter(im, null), im.getWidth(), 0, this);
+//
+//         RescaleOp in = new RescaleOp(-1f, 255, null);
+//         g2.drawImage(in.filter(im, null), im.getWidth() * 2, 0, this);
+//
+//         float[] sharpeningData = { 0f, -1f, 0f, -1f, 5f, -1f, 0f, -1f, 0f };
+//         Kernel ker1 = new Kernel(3, 3, sharpeningData);
+//         ConvolveOp op1 = new ConvolveOp(ker1);
+//         g2.drawImage(op1.filter(im, null), im.getWidth(), im.getHeight(), this);
+//         float[] noiseReductionData = { 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 / 9f, 1 /
+//         9f, 1 / 9f, 1 / 9f, 1 / 9f };
+//         Kernel ker2 = new Kernel(3, 3, noiseReductionData);
+//         ConvolveOp op2 = new ConvolveOp(ker2);
+//         g2.drawImage(op2.filter(im, null), 0, 0, this);
+//
+//         AffineTransform xForm = new AffineTransform();
+//         xForm.setToRotation(Math.PI / 4, im.getWidth(), im.getHeight());
+//         AffineTransformOp op3 = new AffineTransformOp(xForm,
+//         AffineTransformOp.TYPE_BILINEAR);
+//         g2.drawImage(op3.filter(im, null), im.getWidth() * 2, im.getHeight(), this);
 
         // dashed line
         // g2.setStroke(new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
@@ -319,33 +321,37 @@ class JApp1Panel extends JPanel {
         // g2.draw(createSmile(200, 260));
 
         // Third Lesson Part 1
-        // Arc2D arc = new Arc2D.Double(100, 100, 100, 100, 0, 90, Arc2D.PIE);
-        // Area a1 = new Area(arc);
-        // g2.draw(arc);
-        // int[] xPoly = {150,175,200,325,350,275,100};
-        // int[] yPoly = {150,125,150,175,200,250,225};
-        // Polygon poly = new Polygon(xPoly, yPoly, xPoly.length);
-        // Area a2 = new Area(poly);
-        // g2.setColor(Color.red);
-        // g2.draw(poly);
-        // a1.add(a2);
-        // g2.translate(0, 200);
-        // g2.draw(a1);
-        // g2.fill(a1);
-        // a1.subtract(a2);
-        // g2.translate(180, 0);
-        // g2.draw(a1);
-        // g2.fill(a1);
-        // g2.translate(180, 0);
-        // a1.intersect(a2);
-        // g2.setColor(Color.CYAN);
-        // g2.draw(a1);
-        // g2.fill(a1);
-        // g2.translate(0, 100);
-        // a1.exclusiveOr(a2);
-        // g2.setColor(Color.black);
-        // g2.draw(a1);
-        // g2.fill(a1);
+//         Arc2D arc = new Arc2D.Double(100, 100, 100, 100, 90, 120, Arc2D.PIE);
+//         Arc2D arc2 = new Arc2D.Double(100, 300, 100, 100, 0, 90, Arc2D.OPEN);
+//         Arc2D arc3 = new Arc2D.Double(100, 500, 100, 100, 0, 90, Arc2D.CHORD);
+//         Area a1 = new Area(arc);
+//         g2.draw(arc);
+//         g2.draw(arc2);
+//         g2.draw(arc3);
+//         int[] xPoly = {150,175,200,325,350,275,100};
+//         int[] yPoly = {150,125,150,175,200,250,225};
+//         Polygon poly = new Polygon(xPoly, yPoly, xPoly.length);
+//         Area a2 = new Area(poly);
+//         g2.setColor(Color.red);
+//         g2.draw(poly);
+//         a1.add(a2);
+//         g2.translate(0, 200);
+//         g2.draw(a1);
+//         g2.fill(a1);
+//         a1.subtract(a2);
+//         g2.translate(180, 0);
+//         g2.draw(a1);
+//         g2.fill(a1);
+//         g2.translate(180, 0);
+//         a1.intersect(a2);
+//         g2.setColor(Color.CYAN);
+//         g2.draw(a1);
+//         g2.fill(a1);
+//         g2.translate(0, 100);
+//         a1.exclusiveOr(a2);
+//         g2.setColor(Color.black);
+//         g2.draw(a1);
+//         g2.fill(a1);
 
         // Second Lesson
 //         g2.setStroke(new BasicStroke(7));
