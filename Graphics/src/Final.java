@@ -12,8 +12,52 @@ public class Final extends JApplet {
         frame.pack();
         frame.setVisible(true);}
     public void init() {
-        JPanel panel = new LifePanel();
+        JPanel panel = new DropletPanel();
         getContentPane().add(panel);}}
+
+class DropletPanel extends JPanel implements Runnable {
+    Point2D.Double[] droplets = new Point2D.Double[1200];
+    public DropletPanel() {
+        setPreferredSize(new Dimension(500, 500));
+        setBackground(Color.GRAY);
+        for (int i = 0; i < droplets.length - 1; i++){
+            droplets[i] = new Point2D.Double(Math.random(), Math.random());
+        }
+        Thread thread = new Thread(this);
+        thread.start();
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        for (int i = 0; i < droplets.length - 1; i++) {
+            g2.drawLine((int)(640*droplets[i].x), (int)(480*droplets[i].y), (int)(640*droplets[i].x),
+                    (int)(25*Math.random() + 480*droplets[i].y));
+        }
+    }
+
+    public void run() {
+        while (true) {
+            for (int i = 0; i < droplets.length - 1; i++) {
+                double x = droplets[i].getX();
+                double y = droplets[i].getY();
+                y += 0.1 * Math.random();
+                if (y > 1){
+                    y = 0.3 * Math.random();
+                    x = Math.random();
+                }
+                droplets[i].setLocation(x, y);
+            }
+            repaint();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex){
+                System.out.println(ex);
+            }
+        }
+    }
+}
+
 class LifePanel extends JPanel implements ActionListener{
     int n = 30;
     boolean[][] cells1 = new boolean[n][n];
@@ -28,7 +72,6 @@ class LifePanel extends JPanel implements ActionListener{
                 cells1[i][j] = temp;
                 cells2[i][j] = false;
             }}
-        System.out.println("ohayou");
         Timer timer = new Timer(500, this);
         timer.start();
     }
